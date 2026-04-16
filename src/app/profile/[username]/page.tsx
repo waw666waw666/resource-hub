@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, use } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
@@ -8,6 +8,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { User as UserIcon, Calendar } from 'lucide-react'
 import Image from 'next/image'
 import { Resource } from '@/types'
+import { useParams } from 'next/navigation'
 
 interface UserProfile {
   id: string
@@ -16,8 +17,9 @@ interface UserProfile {
   createdAt: string
 }
 
-export default function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
-  const { username } = use(params)
+export default function ProfilePage() {
+  const params = useParams()
+  const username = params.username as string
   const { user } = useAuth()
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [resources, setResources] = useState<Resource[]>([])
@@ -68,7 +70,7 @@ export default function ProfilePage({ params }: { params: Promise<{ username: st
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-[rgba(0,0,0,0.95)] mb-2}>用户不存在</h1>
+            <h1 className="text-2xl font-bold text-[rgba(0,0,0,0.95)] mb-2">用户不存在</h1>
             <p className="text-[#615d59]">该用户可能已被删除或不存在</p>
           </div>
         </main>

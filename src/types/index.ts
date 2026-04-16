@@ -30,3 +30,10 @@ export interface Comment {
   replies?: Comment[]
   createdAt: string
 }
+
+export interface PaginatedResources {
+  resources: Resource[]
+  total: number
+  page: number
+  totalPages: number
+}

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState, useEffect, use } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { useState, useEffect } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
@@ -14,8 +14,9 @@ import { useToast } from '@/hooks/useToast'
 import { Resource, Comment } from '@/types'
 import { Heart, MessageCircle, ArrowLeft, User, Calendar, Edit, Trash2 } from 'lucide-react'
 
-export default function ResourceDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params)
+export default function ResourceDetailPage() {
+  const params = useParams()
+  const id = params.id as string
   const router = useRouter()
   const { user } = useAuth()
   const { showToast } = useToast()
@@ -56,8 +57,10 @@ export default function ResourceDetailPage({ params }: { params: Promise<{ id: s
   }
 
   useEffect(() => {
-    fetchResource()
-    fetchComments()
+    if (id) {
+      fetchResource()
+      fetchComments()
+    }
   }, [id])
 
   const handleLike = async () => {
@@ -302,7 +305,7 @@ export default function ResourceDetailPage({ params }: { params: Promise<{ id: s
               </div>
             ) : (
               <div className="mb-8 p-4 bg-[#f6f5f4] rounded-lg text-center">
-                <p className="text-[#615d59] mb-2}>登录后才能评论</p>
+                <p className="text-[#615d59] mb-2">登录后才能评论</p>
                 <Link href="/login">
                   <Button variant="primary" size="sm">登录</Button>
                 </Link>
