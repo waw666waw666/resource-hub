@@ -50,6 +50,12 @@ npm run db:studio
 npm run build
 ```
 
+## 使用方法
+
+1. **界面交互**：启动本地服务器后，访问 `http://localhost:3000` 登录系统。在网页端提供可视化的添加资源、分类管理和检索过滤功能。
+2. **Prisma 数据库后台管理**：
+   - 本地运行 `npm run db:studio`，在弹出的 `Prisma Studio`（`http://localhost:5555`）网页中，可以直接对资源记录（Resources）、分类（Categories）和用户（Users）表进行添加、删除和编辑操作。
+
 ## 目录结构
 
 ```text
