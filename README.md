@@ -50,6 +50,24 @@ npm run db:studio
 npm run build
 ```
 
+## 目录结构
+
+```text
+.
+├── prisma/
+│   └── schema.prisma          # Prisma 数据库模式定义
+├── src/
+│   ├── app/                   # Next.js 14 App Router 页面与路由
+│   ├── components/            # UI 组件库
+│   ├── lib/                   # 认证、加密与工具函数
+│   └── styles/                # 全局样式
+├── .env.example               # 环境变量配置示例
+├── next.config.js             # Next.js 配置
+├── package.json               # 项目依赖与构建命令
+├── tailwind.config.ts         # Tailwind CSS 配置
+└── README.md                  # 说明文档
+```
+
 ## 许可证
 
 基于 [MIT License](./LICENSE) 协议开源。
